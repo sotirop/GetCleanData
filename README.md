@@ -6,7 +6,8 @@ in the working directory in an unzipped UCI HAR Dataset folder.
 
 From the project website we downloaded a zip file and we unzipped it.
 The result was the following directory structure:
-.
+
+`.
 ├── README.txt                   #
 ├── activity_labels.txt
 ├── features.txt
@@ -38,4 +39,4 @@ The result was the following directory structure:
     │   └── total_acc_z_train.txt
     ├── X_train.txt
     ├── subject_train.txt
-    └── y_train.txt
+    └── y_train.txt`
