@@ -57,7 +57,23 @@ First of all, we load all needed data in R using read.table commands.
 
 ### Step 1. Merges the training and the test sets to create one data set. ###
 In order to merge the sets, we essentially need to merge the `subject_` files, the `y_` files (with the activities)
-and the `X_` files with the measurements.
+and the `X_` files with the measurements. In the following images, the merge of the two data sets is depicted.
+In the first one, the mean() and std() columns of `X_train` and `X_test` are selected, and they create the mean and std
+only table.
+
+
+
+![X](https://raw.githubusercontent.com/sotirop/GetCleanData/master/X.png)
+
+In the second image, we see the merging of
+
+* `subject_train` with `subject_test` (rbind function to merge the green with the blue column)
+* `y_train` with `y_test` (rbind function to merge the green with the blue column)
+* `X_train` is already merged with `X_test` from the first image
+* all these three are merged together to create one data set.
+
+![one data set](https://raw.githubusercontent.com/sotirop/GetCleanData/master/one_data_set.png)
+
 
 ### Step 2. Extracts only the measurements on the mean and standard deviation for each measurement. ###
 We used grep function to distinguish all the features from `features.txt` that contain the substring `mean()` and `std()`.
