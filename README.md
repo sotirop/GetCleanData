@@ -61,16 +61,14 @@ and the `X_` files with the measurements. In the following images, the merge of 
 In the first one, the mean() and std() columns of `X_train` and `X_test` are selected, and they create the mean and std
 only table.
 
-
-
 ![X](https://raw.githubusercontent.com/sotirop/GetCleanData/master/X.png)
 
 In the second image, we see the merging of
 
-* `subject_train` with `subject_test` (rbind function to merge the green with the blue column)
-* `y_train` with `y_test` (rbind function to merge the green with the blue column)
+* `subject_train` with `subject_test` (`rbind` function to merge the green with the blue column)
+* `y_train` with `y_test` (`rbind` function to merge the green with the blue column)
 * `X_train` is already merged with `X_test` from the first image
-* all these three are merged together to create one data set.
+* all these three are merged together (using `cbind`) to create one data set.
 
 ![one data set](https://raw.githubusercontent.com/sotirop/GetCleanData/master/one_data_set.png)
 
@@ -83,11 +81,24 @@ All sustitutions used the `gsub` function.
 
 ### Step 3. Uses descriptive activity names to name the activities in the data set ###
 Files `y_test` and `y_train` contained numbers `1..6`. Using info from `activity_labels`,
-we mapped numbers to activity names. For achieving that, we used the mapvalues function.
+we mapped numbers to activity names. For achieving that, we used the `mapvalues` function.
 
 ### Step 4. Appropriately labels the data set with descriptive variable names. ###
 For appropriate labels, we used the labels from `features.txt`, as described in Step 2.
 
 ### Step 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject. ###
+The final step creates a tidy set. The script groups the X array by
+subject and activity using the `%>%` operator, the `group_by` function
+and the `summarise_each` function of the `dplyr` package. This one
+liner is a very useful command and shos the power of the dplyr
+package. Since we calculated the average of each variable, we
+concatenate each variable name with the substring `AVG_` using `paste`
+function. In order to be fully compliant with the tidy data set
+definition, we concatenated the string `Person` before each subject
+number, creating the values Person1, Person2, etc. Last
+function call `View(tidy) shows the tide table in Rstudio.
 
 
+## Saving result in file ##
+Currently the script does not save the produced tidy set. If needed, you can uncomment the last line of the script.
+A `tidy.txt` file will be produced.

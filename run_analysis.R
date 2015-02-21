@@ -76,4 +76,9 @@ X <- cbind(subject,activity,X)
 # to create more human friendly subject name like Person1, Person2, etc :)
 tidy <-(X %>% group_by(subject,activity)  %>% summarise_each(funs(mean)))
 tidy$subject <- paste("Person", tidy$subject, sep="")
+for (i in 3:length(names(tidy))){
+  colnames(tidy)[i] <- paste("AVG_", colnames(tidy)[i], sep="")  
+}
+
 View(tidy)
+# write.table(x=tidy,file = "tidy.txt")
