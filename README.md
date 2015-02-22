@@ -74,10 +74,10 @@ In the second image, we see the merging of
 
 
 ### Step 2. Extracts only the measurements on the mean and standard deviation for each measurement. ###
-We used grep function to distinguish all the features from `features.txt` that contain the substring `mean()` and `std()`.
+We used `grep` function to distinguish all the features from `features.txt` that contain the substring `mean()` and `std()`.
 And since R language cannot handle table variables that contains parenthesis or '-',
-we substituted all minus symbols ('-') to undescores ('_') and `mean()` to `MEAN` and `std()` to `STD`.
-All sustitutions used the `gsub` function.
+we substituted all minus symbols ('-') to underscores ('_') and `mean()` to `MEAN` and `std()` to `STD`.
+All substitutions used the `gsub` function.
 
 ### Step 3. Uses descriptive activity names to name the activities in the data set ###
 Files `y_test` and `y_train` contained numbers `1..6`. Using info from `activity_labels`,
@@ -90,7 +90,7 @@ For appropriate labels, we used the labels from `features.txt`, as described in 
 The final step creates a tidy set. The script groups the X array by
 subject and activity using the `%>%` operator, the `group_by` function
 and the `summarise_each` function of the `dplyr` package. This one
-liner is a very useful command and shos the power of the dplyr
+liner is a very useful command and shows the power of the `dplyr`
 package. Since we calculated the average of each variable, we
 concatenate each variable name with the substring `AVG_` using `paste`
 function. In order to be fully compliant with the tidy data set
