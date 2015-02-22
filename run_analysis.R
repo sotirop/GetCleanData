@@ -81,4 +81,4 @@ for (i in 3:length(names(tidy))){
 }
 
 View(tidy)
-# write.table(x=tidy,file = "tidy.txt")
+# write.table(x=tidy,file = "tidy.txt", row.name=FALSE)
